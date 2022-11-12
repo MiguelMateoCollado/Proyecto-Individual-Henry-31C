@@ -9,11 +9,11 @@ module.exports = (sequelize) => {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
-        primaryKey: true,
       },
       id: {
-        type: DataTypes.INTEGER,
-
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        primaryKey: true,
         unique: true,
       },
       description: {
@@ -27,7 +27,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       platforms:{
-        type: DataTypes.STRING
+        type: DataTypes.ARRAY(DataTypes.STRING)
       }
     },
     {

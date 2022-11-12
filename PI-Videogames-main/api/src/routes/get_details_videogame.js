@@ -1,54 +1,57 @@
 const express = require("express");
 const get_details_videogame = express.Router();
 const axios = require("axios");
-const { Videogame } = require("../db.js");
+const { Videogame, Genero } = require("../db.js");
 
-get_details_videogame.get("/:name", async (req, res) => {
-/*
-  const find_game = await Videogame.findByPk(req.params.name);
+get_details_videogame.get("/:id", async (req, res) => {
+  // Esta parte analiza lo que pasaron por name y si encuentra algo en la base de datos lo trae
+  try {
+    let key = "9094a53c63b44a4bb20f4371bb277ede";
+    let url1 = await axios.get(
+      `https://api.rawg.io/api/games?key=${key}&page_size=40`
+    );
+    let url2 = await axios.get(
+      `https://api.rawg.io/api/games?key=${key}&page_size=40&page=2`
+    );
+    let url3 = await axios.get(
+      `https://api.rawg.io/api/games?key=${key}&page_size=40&page=3`
+    );
+    const { id } = req.params;
 
-  if (find_game.length !== 0) {
-    const { name, description, date, rating, platforms, background_image } =
-      find_game;
+    if (isNaN(id)) {
+      const videogame = await Videogame.findOne({
+        where: {
+          id: req.params.id,
+        },
+        include: {
+          model: Genero,
+          through: {
+            where: {
+              videogameId: req.params.id,
+            },
+            attributes: [],
+          },
+        },
+      });
+      return res.json(videogame);
+    }
 
-    let game_detail = {
-      name: name,
-      image: background_image,
-      description: description,
-      date: date,
-      rating: rating,
-    };
-    return res.json(game_detail);
+    let list = await axios.all([url1, url2, url3]).then(
+      axios.spread(async (...responses) => {
+        const responseOne = responses[0].data.results;
+        const responseTwo = responses[1].data.results;
+        const responesThree = responses[2].data.results;
+        let combine = await responseOne
+          .concat(responseTwo)
+          .concat(responesThree);
+        return await combine;
+      })
+    );
+    let lista = list.filter((game) => game.id === parseInt(id));
+    return res.json(lista);
+  } catch (error) {
+    res.json(error.message);
   }
-*/  
-  const videogame = await axios(
-    `https://api.rawg.io/api/games/${req.params.id}?key=9094a53c63b44a4bb20f4371bb277ede&page_size=100`
-  );
-
-  const {
-    background_image,
-    name,
-    genres,
-    description,
-    date,
-    rating,
-    platforms,
-  } = videogame.data;
-
-  let game_detail = {
-    name: name,
-    image: background_image,
-    genres: genres.map((genre) => {
-      return genre.name;
-    }),
-    description: description,
-    date: date,
-    rating: rating,
-    platforms: platforms.map((platform) => {
-      return platform.platform.name;
-    }),
-  };
-  res.json(game_detail);
 });
 
 module.exports = get_details_videogame;

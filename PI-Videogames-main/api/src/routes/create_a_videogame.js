@@ -29,7 +29,10 @@ create_a_videogame.post("/", async (req, res) => {
         newGame.addGenero(gen);
       }
     } 
-    newGame.addGenero(generoId);
+
+    if (typeof generoId === "number") {
+      newGame.addGenero(generoId)
+    }
     
     res.status(200).json(newGame);
   } catch (error) {
