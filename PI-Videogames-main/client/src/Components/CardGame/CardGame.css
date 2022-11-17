@@ -20,6 +20,10 @@
   letter-spacing: 1px ;
 
 }
+.link {
+  color: white;
+  text-decoration: none;
+}
 .card-body {
   margin: 0;
   padding: 0;

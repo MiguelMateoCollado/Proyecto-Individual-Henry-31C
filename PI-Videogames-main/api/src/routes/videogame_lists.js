@@ -17,16 +17,18 @@ videogame_lists.get("/", async (req, res) => {
     var url3 = await axios.get(
       `https://api.rawg.io/api/games?key=${key}&page_size=40&page=3`
     );
-    let videogames = await axios.all([url1, url2, url3]).then(axios.spread((...responses) => {
-      const responseOne = responses[0].data.results
-      const responseTwo = responses[1].data.results
-      const responesThree = responses[2].data.results
-      let combine = responseOne.concat(responseTwo).concat(responesThree)
-      return combine
-    }))
+    let videogames = await axios.all([url1, url2, url3]).then(
+      axios.spread((...responses) => {
+        const responseOne = responses[0].data.results;
+        const responseTwo = responses[1].data.results;
+        const responesThree = responses[2].data.results;
+        let combine = responseOne.concat(responseTwo).concat(responesThree);
+        return combine;
+      })
+    );
     // esta parte trae 120 juegos desde la API
-    let query_name =  req.query.name;
-    
+    let query_name = req.query.name;
+
     if (query_name) {
       let abjustment_name = await query_name.split(" ");
 
@@ -43,6 +45,7 @@ videogame_lists.get("/", async (req, res) => {
       // Crea la lista de juegos
       let list_of_games = await games_by_filter.map((game) => {
         let games = {
+          id: game.id,
           name: game.name,
           image: game.background_image,
           genres: game.genres.map((genre) => {
@@ -52,23 +55,21 @@ videogame_lists.get("/", async (req, res) => {
         return games;
       });
       return res.status(200).json(list_of_games);
-    } 
-    
-    else {
+    } else {
       let list_of_games = await videogames.map((game) => {
         let games = {
+          id: game.id,
           name: game.name,
           image: game.background_image,
           genres: game.genres.map((genre) => {
-            return genre.name;
+            return { genresName: genre.name, genresId: genre.id };
           }),
         };
         return games;
       });
-    
-       return res.status(200).json(list_of_games);
+
+      return res.status(200).json(list_of_games);
     }
-   
   } catch (error) {
     res.json({ error: "Estos juegos no existen" });
   }

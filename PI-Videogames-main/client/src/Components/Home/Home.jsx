@@ -16,7 +16,7 @@ function Home() {
   useEffect(() => {
     dispatch(getAllGames());
   }, []);
-
+  
   function handleClick(event) {
     event.preventDefault();
     dispatch(getAllGames());
@@ -33,7 +33,13 @@ function Home() {
         <FilterRating />
       </div>
       {allGames.map((game) => (
-        <CardGame image={game.image} name={game.name} genres={game.genres} />
+        <CardGame
+          key={game.id}
+          id={game.id}
+          image={game.image}
+          name={game.name}
+          genres={game.genres}
+        />
       ))}
     </div>
   );
