@@ -1,0 +1,14 @@
+.container {
+  padding-top: 2%;
+  padding-inline: 5%;
+  font-family: "Arcadia";
+  display: grid;
+  grid-template-columns: 60% 8% 8% 8% 8% 8%;
+  justify-content: center;
+}
+h1{
+  color: white;
+}
+.title {
+  text-align: center;
+}

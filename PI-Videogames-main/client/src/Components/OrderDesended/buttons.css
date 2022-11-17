@@ -1,0 +1,46 @@
+.wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.wrapper {
+  display: block;
+  width: 70px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  border: 2px solid rgb(255, 255, 255);
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all 0.05s;
+  cursor: pointer;
+}
+
+.wrapper span {
+  position: relative;
+  z-index: 2;
+}
+
+.wrapper:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: white;
+  transition: all 0.35s;
+}
+
+.wrapper:hover {
+  color: black;
+}
+
+.wrapper:hover:after {
+  width: 100%;
+}
