@@ -1,16 +1,11 @@
-.landing-page {
+.landingPage {
   width: 1280px;
   height: 895px;
   padding: 0;
   margin: 0;
-  background: black;
-  background-position: 180px;
-  background-size: 900px;
-  background-image: url("https://i.postimg.cc/FKDqQQc6/game-01.jpg");
-  background-color: black;
-  background-repeat: no-repeat;
+ 
 }
-.text-primary {
+.textPrimary {
   position: absolute;
   left: 48%;
   top: 40%;
@@ -22,7 +17,7 @@
   cursor: pointer;
 }
 
-.text-primary::after {
+.textPrimary::after {
   content: "VideoGame Store";
   position: absolute;
   color: transparent;
@@ -32,11 +27,11 @@
   left: 0px;
   transition: 0.5s;
 }
-.text-primary:hover:before {
+.textPrimary:hover:before {
   top: 10px;
   left: 10px;
 }
-.text-primary:hover:after {
+.textPrimary:hover:after {
   top: -10px;
   left: -10px;
 }

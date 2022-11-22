@@ -1,6 +1,6 @@
 const axios = require("axios");
 const express = require("express");
-const { Genero } = require("../db.js");
+const { Genres } = require("../db.js");
 const genres = express.Router();
 // obtiene todos los generos de juegos y los agrega a una tabla
 genres.get("/", async (req, res) => {
@@ -9,18 +9,12 @@ genres.get("/", async (req, res) => {
       `https://api.rawg.io/api/genres?key=9094a53c63b44a4bb20f4371bb277ede`
     );
     let generos = await genres.data.results.map((genres) => {
-      const gen = {
-        name: genres.name,
-        id: genres.id,
-      };
-      Genero.create({
-        name: gen.name,
-        id: gen.id,
+      Genres.findOrCreate({
+        where: { name: genres.name, id: genres.id },
       });
-      return gen;
     });
-
-    res.status(200).json(generos);
+    const allGeneros = await Genres.findAll();
+    res.status(200).json(allGeneros);
   } catch (error) {
     res.status(400).send(error.message);
   }

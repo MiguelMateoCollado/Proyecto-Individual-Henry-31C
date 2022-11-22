@@ -1,16 +1,28 @@
 import React from "react";
-import "./InputSearch.css";
+import styles from "./InputSearch.module.css";
+import { searchGame } from "../../Redux/Actions/actions";
+import { useDispatch } from "react-redux";
 export default function InputSearch() {
+  
+  let dispatch = useDispatch();
+
+  const takeName = (e) => {
+    dispatch(searchGame(e.target.value));
+  };
+
   return (
-    <div className="form__group field">
-      <input
-        type="input"
-        className="form__field"
-        placeholder="Search Videogame..."
-        name="name"
-        id="name"
-        required
-      />
-    </div>
+    <form className={styles.form__group}>
+      <div className={styles.containerForm}>
+        <input
+          type="input"
+          className={styles.form__field}
+          placeholder="Search Videogame..."
+          name="name"
+          onChange={(e) => takeName(e)}
+          id="name"
+          required
+        />
+      </div>
+    </form>
   );
 }

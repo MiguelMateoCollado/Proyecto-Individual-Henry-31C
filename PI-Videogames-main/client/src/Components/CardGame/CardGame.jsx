@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./CardGame.css";
+import GamesDetails from "../GamesDetails/GamesDetails";
+import styles from "./CardGame.module.css";
 export default function CardGame({ image, name, genres, id }) {
   const divStyle = {
     backgroundRepeat: "no-repeat",
@@ -13,25 +14,19 @@ export default function CardGame({ image, name, genres, id }) {
     lineHeight: 1.5,
     background: `url(${image})`,
     backgroundPosition: "center",
-    backgroundSize: "500px 500px",
-    width: "350px",
-    height: "500px",
+    backgroundSize: "400px 400px",
+    width: "260px",
+    height: "400px",
     boxShadow: ` ${0} ${0} 50px rgba(${(0, 0, 0, 0.315)})`,
   };
   return (
-    <div className="general">
-      <Link className="link" to={`/videogames/${id}`}>
+    <div className={styles.general} >
+      <Link className={styles.link}  to={`/home/${id}`}>
         <div style={divStyle}>
-          <div className="card-body-info">
-            <p>{}</p>
-            <p className="name">{name}</p>
-            <div>
-              {Object.values(genres).map((gen) => (
-                <p className="genres" key={gen.genresId}>
-                  {gen.genresName}
-                </p>
-              ))}
-            </div>
+          <div className={styles.cardBodyInfo}>
+            <p className={styles.name}>{name}</p>
+            <p className={styles.genres}>{genres.map((gen) => gen + " | ")} </p>
+            <div></div>
           </div>
         </div>
       </Link>

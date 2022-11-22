@@ -1,6 +1,6 @@
 const express = require("express");
 const videogame_lists = express.Router();
-const { Videogame } = require("../models/Videogame.js");
+const { Videogame, Genres } = require("../db.js");
 const axios = require("axios");
 // trae la lista de juegos.
 videogame_lists.get("/", async (req, res) => {
@@ -26,50 +26,56 @@ videogame_lists.get("/", async (req, res) => {
         return combine;
       })
     );
-    // esta parte trae 120 juegos desde la API
+    let gamesDB = await Videogame.findAll({
+      include: Genres,
+      through: {
+        attributes: [],
+      },
+    });
     let query_name = req.query.name;
 
+    videogames = await videogames.map((game) => {
+      const newGame = {
+        id: game.id,
+        name: game.name,
+        platforms: game.platforms.map((platform) => platform.platform.name),
+        genres: game.genres.map((gen) => gen.name),
+        date: game.released,
+        rating: game.rating,
+        image: game.background_image,
+      };
+      return newGame;
+    });
+
+    gamesDB = await gamesDB.map((game) => {
+      const newGame = {
+        id: game.id,
+        name: game.name,
+        platforms: game.platforms,
+        genres: game.genres.map((gen) => gen.name),
+        date: game.date,
+        rating: game.rating,
+        image: game.image,
+        createdInDb: game.createdInDb
+      };
+      return newGame;
+    });
+
+    videogames = await videogames.concat(gamesDB);
+    
+    // esta parte trae 120 juegos desde la API
     if (query_name) {
-      let abjustment_name = await query_name.split(" ");
-
-      //transforma la primera letra del texto en mayuscula
-      abjustment_name = await abjustment_name
-        .map((name) => name[0].toUpperCase() + name.substr(1))
-        .join(" ");
-      //transforma la primera letra del texto en mayuscula
-
       // Crea la lista de juegos
+      query_name = query_name.toLowerCase();
+
       games_by_filter = await videogames.filter((game) =>
-        game.name.includes(abjustment_name)
+        game.name.toLowerCase().includes(query_name)
       );
-      // Crea la lista de juegos
-      let list_of_games = await games_by_filter.map((game) => {
-        let games = {
-          id: game.id,
-          name: game.name,
-          image: game.background_image,
-          genres: game.genres.map((genre) => {
-            return genre.name;
-          }),
-        };
-        return games;
-      });
-      return res.status(200).json(list_of_games);
-    } else {
-      let list_of_games = await videogames.map((game) => {
-        let games = {
-          id: game.id,
-          name: game.name,
-          image: game.background_image,
-          genres: game.genres.map((genre) => {
-            return { genresName: genre.name, genresId: genre.id };
-          }),
-        };
-        return games;
-      });
 
-      return res.status(200).json(list_of_games);
+      // Crea la lista de juegos
+      return res.status(200).json(games_by_filter);
     }
+    return res.status(200).json(await videogames);
   } catch (error) {
     res.json({ error: "Estos juegos no existen" });
   }

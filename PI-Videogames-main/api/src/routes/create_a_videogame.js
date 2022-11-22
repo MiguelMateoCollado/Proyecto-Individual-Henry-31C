@@ -1,6 +1,6 @@
 const express = require("express");
 const create_a_videogame = express.Router();
-const { Videogame } = require("../db.js");
+const { Videogame, Genres, Plataformas } = require("../db.js");
 // crea un juego nuevo
 create_a_videogame.post("/", async (req, res) => {
   try {
@@ -11,30 +11,36 @@ create_a_videogame.post("/", async (req, res) => {
       description,
       rating,
       platforms,
-      background_image,
-      generoId,
+      createInDb,
+      image,
+      genres,
     } = req.body;
+
     const newGame = await Videogame.create({
-      name: name,
-      id: id,
-      date: date,
-      description: description,
-      rating: rating,
-      image: background_image,
-      platforms: platforms,
+      name,
+      id,
+      date,
+      description,
+      rating,
+      image,
+      createInDb,
+      platforms,
+      genres,
+    });
+    let genresDB = await Genres.findAll({
+      where: {
+        name: genres,
+      },
+    });
+    let platformsDB = await Plataformas.findAll({
+      where: {
+        name: platforms,
+      },
     });
 
-    if (typeof generoId === "object") {
-      for (const gen of generoId) {
-        newGame.addGenero(gen);
-      }
-    } 
-
-    if (typeof generoId === "number") {
-      newGame.addGenero(generoId)
-    }
-    
-    res.status(200).json(newGame);
+    newGame.addGenres(genresDB);
+    newGame.addPlataformas(platformsDB);
+    res.status(200).json("se creo");
   } catch (error) {
     res.status(400).send(error.message);
   }

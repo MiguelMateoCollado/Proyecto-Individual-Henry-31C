@@ -1,0 +1,17 @@
+.containerForm button {
+  font-size: 150%;
+  background-color: black;
+  color: white;
+  padding: 8%;
+  width: 120px;
+}
+.containerForm button {
+  position: relative;
+  z-index: 2;
+}
+.containerForm button:hover {
+  background: white;
+  color: black;
+  transition: all 0.25s;
+  cursor: pointer;
+}

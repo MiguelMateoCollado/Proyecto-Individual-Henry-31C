@@ -37,11 +37,13 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Videogame, Genero } = sequelize.models;
+const { Videogame, Genres, Plataformas } = sequelize.models;
 
 // Aca vendrian las relaciones
-Videogame.belongsToMany(Genero, { through: "genero_game" });
-Genero.belongsToMany(Videogame, { through: "genero_game" });
+Videogame.belongsToMany(Genres, { through: "genero_game" });
+Genres.belongsToMany(Videogame, { through: "genero_game" });
+Videogame.belongsToMany(Plataformas, { through: "platform_game" });
+Plataformas.belongsToMany(Videogame, { through: "platform_game" });
 // Product.hasMany(Reviews);
 
 module.exports = {

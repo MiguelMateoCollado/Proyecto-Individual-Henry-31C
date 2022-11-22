@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./LadingPage.css";
+import styles from "./LadingPage.module.css";
 export default function LadingPage() {
   return (
-    <div className="landing-page">
+    <div>
       <Link
         to={{
           pathname: "home",
         }}
       >
-        <h1 className="text-primary">VideoGame Store</h1>
+        <h1 className={styles.textPrimary}>VideoGame Store</h1>
+        
       </Link>
     </div>
   );

@@ -1,7 +1,7 @@
 const express = require("express");
 const get_details_videogame = express.Router();
 const axios = require("axios");
-const { Videogame, Genero } = require("../db.js");
+const { Videogame, Genres } = require("../db.js");
 
 get_details_videogame.get("/:id", async (req, res) => {
   // Esta parte analiza lo que pasaron por name y si encuentra algo en la base de datos lo trae
@@ -24,7 +24,7 @@ get_details_videogame.get("/:id", async (req, res) => {
           id: req.params.id,
         },
         include: {
-          model: Genero,
+          model: Genres,
           through: {
             where: {
               videogameId: req.params.id,
@@ -35,7 +35,6 @@ get_details_videogame.get("/:id", async (req, res) => {
       });
       return res.json(videogame);
     }
-
     let list = await axios.all([url1, url2, url3]).then(
       axios.spread(async (...responses) => {
         const responseOne = responses[0].data.results;
@@ -47,8 +46,18 @@ get_details_videogame.get("/:id", async (req, res) => {
         return await combine;
       })
     );
-    let lista = list.filter((game) => game.id === parseInt(id));
-    return res.json(lista);
+    let videoGame = list.filter((game) => game.id === parseInt(id));
+    const GameDetail = {
+      name: videoGame[0].name,
+      date: videoGame[0].released,
+      image: videoGame[0].background_image,
+      rating: videoGame[0].rating,
+      platforms: videoGame[0].platforms.map(
+        (platform) => platform.platform.name
+      ),
+      genres: videoGame[0].genres.map((gen) => gen.name)
+    };
+    return res.json(GameDetail);
   } catch (error) {
     res.json(error.message);
   }
