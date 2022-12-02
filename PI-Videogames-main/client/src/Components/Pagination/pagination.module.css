@@ -1,19 +1,26 @@
-.pagination {
-  display: inline-flex;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  margin-top: 2%;
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
-.pagination li {
-  padding-right: 4%;
+.navbar {
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  list-style: none;
+  font-size: 40px;
 }
-.pagination li:hover {
-  color: red;
-  cursor: pointer;
+
+.item {
+  margin-inline: 10px;
 }
-.div {
-  text-align: center;
-  width: auto;
-  font-size: 30px;
+
+.item:hover {
+    transition: 0.10s;
+    cursor: pointer;
+    color: red;
 }

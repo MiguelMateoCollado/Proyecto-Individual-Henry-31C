@@ -6,11 +6,12 @@ export default function FilterGenres() {
   let dispatch = useDispatch();
   const handleChange = (e) => {
     dispatch(FiltrarGeneros(e.target.value));
-    dispatch(refreshPage())
+    dispatch(refreshPage());
   };
+
   return (
-    <div className={styles.selectForm}>
-      <select name="generos" id="generos" onChange={(e) => handleChange(e)}>
+    <div>
+      <select name="generos" id="generos" className={styles.selecter} onChange={(e) => handleChange(e)}>
         <option value="Todos">Todos</option>
         <option value="Adventure">Adventure</option>
         <option value="Action">Action</option>
@@ -25,7 +26,7 @@ export default function FilterGenres() {
         <option value="Arcade">Arcade</option>
         <option value="Platformer">Platformer</option>
         <option value="Racing">Racing</option>
-        <option value="Massively Multiplayer"> Massively  Multiplayer</option>
+        <option value="Massively Multiplayer"> Massively Multiplayer</option>
         <option value="Sports">Sports</option>
         <option value="Fighting">Fighting</option>
         <option value="Family">Family</option>

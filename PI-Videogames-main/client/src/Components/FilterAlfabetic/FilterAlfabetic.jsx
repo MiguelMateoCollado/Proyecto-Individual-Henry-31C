@@ -1,14 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./buttons.module.css";
-export default function FilterAlfabetic({button, SortGames1, SortGames2}) {
+import {
+  sortReverse,
+  refreshPage,
+  sortGames,
+} from "../../Redux/Actions/actions";
+import { useDispatch } from "react-redux";
+export default function FilterAlfabetic() {
+  const [button, setButton] = useState(false);
+  const dispatch = useDispatch();
+
+  const SortGames1 = () => {
+    setButton(true);
+    dispatch(sortReverse());
+    dispatch(refreshPage());
+  };
+
+  const SortGames2 = () => {
+    setButton(false);
+    dispatch(sortGames());
+    dispatch(refreshPage());
+  };
+
   return (
-    <div className={styles.containerForm}>
+    <div>
       {button === true ? (
-        <button value="initial" onClick={SortGames2}>
+        <button className={styles.alfa} value="initial" onClick={SortGames2}>
           A-Z
         </button>
       ) : (
-        <button value="reverse" onClick={SortGames1}>
+        <button className={styles.alfa} value="reverse" onClick={SortGames1}>
           Z-A
         </button>
       )}

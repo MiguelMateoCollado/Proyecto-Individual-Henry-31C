@@ -9,7 +9,7 @@ export default function LadingPage() {
           pathname: "home",
         }}
       >
-        <h1 className={styles.textPrimary}>VideoGame Store</h1>
+        <h1 className={styles.textPrimary}>VideoGame Henry</h1>
         
       </Link>
     </div>

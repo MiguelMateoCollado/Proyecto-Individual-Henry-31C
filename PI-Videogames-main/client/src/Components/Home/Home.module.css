@@ -1,7 +1,7 @@
 .container {
   font-family: "Arcadia";
   display: grid;
-  grid-template-columns: 40% 10% 10% 10% 10%;
+  grid-template-columns: 50% 8% 8% 8% 8% 8%;
   grid-template-rows: 100%;
   justify-content: center;
 }
@@ -13,4 +13,51 @@ h1 {
 }
 .home {
   text-align: center;
+}
+
+.create {
+  font-size: 150%;
+  background-color: black;
+  color: white;
+  padding: 8%;
+  width: 100px;
+  position: relative;
+  z-index: 2;
+}
+
+.create:hover {
+  background: white;
+  color: black;
+  transition: all 0.25s;
+  cursor: pointer;
+}
+.continue {
+  cursor: pointer;
+  background: #fb2a1f;
+  width: 175px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-inline: 2%;
+  letter-spacing: 4px;
+  height: auto;
+  color: white;
+  font-family: inherit;
+  padding: 0.6em 1.3em;
+  font-weight: 900;
+  font-size: 18px;
+  border: 2px solid rgb(249, 247, 247);
+  border-radius: 0.4em;
+  box-shadow: 0.1em 0.1em white;
+  transition: 0.10s;
+}
+
+.continue:hover {
+  background: rgb(183, 10, 10);
+  transform: translate(-0.05em, -0.05em);
+  box-shadow: 0.15em 0.15em rgb(220, 220, 220);
+}
+
+.continue:active {
+  transform: translate(0.05em, 0.05em);
+  box-shadow: 0.07em 0.07em white;
 }

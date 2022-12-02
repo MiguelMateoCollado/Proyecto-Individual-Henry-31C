@@ -1,14 +1,13 @@
 .landingPage {
-  width: 1280px;
+  width: 1380px;
   height: 895px;
   padding: 0;
   margin: 0;
- 
 }
 .textPrimary {
   position: absolute;
-  left: 48%;
-  top: 40%;
+  left: 50%;
+  top: 43%;
   display: block;
   letter-spacing: 8px;
   transform: translate(-50%, -50%);
@@ -16,12 +15,11 @@
   color: white;
   cursor: pointer;
 }
-
 .textPrimary::after {
-  content: "VideoGame Store";
+  content: "VideoGame Henry";
   position: absolute;
   color: transparent;
-  background-image: repeating-linear-gradient(#ede5ff, #3282B8);
+  background-image: repeating-linear-gradient(#b31111, #c41a1a);
   -webkit-background-clip: text;
   top: 0px;
   left: 0px;

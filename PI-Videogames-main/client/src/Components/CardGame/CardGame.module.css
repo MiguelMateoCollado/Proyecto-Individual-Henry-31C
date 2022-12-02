@@ -1,15 +1,18 @@
 .general {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   padding-top: 2%;
   padding-left: 2%;
   font-family: "Raleway", sans-serif;
   display: inline-block;
-  grid-template-columns: auto auto auto auto;
   padding-bottom: 1%;
+  background-repeat: none;
 }
 .name {
   font-size: 16px;
   font-weight: bold;
-  letter-spacing: 1px ;
+  letter-spacing: 1px;
 }
 .genres {
   display: inline-block;
@@ -17,8 +20,7 @@
   padding: 0%;
   margin: 0%;
   padding-left: 3px;
-  letter-spacing: 1px ;
-
+  letter-spacing: 1px;
 }
 .link {
   color: white;
@@ -32,8 +34,9 @@
   display: flex;
   justify-content: flex-start;
   line-height: 1.5;
-  background: url("https://i.pinimg.com/564x/b9/41/8a/b9418aff580fc3932f27bb47a36dfc1b.jpg");
   background-repeat: no-repeat;
+  background: url("https://i.pinimg.com/564x/b9/41/8a/b9418aff580fc3932f27bb47a36dfc1b.jpg");
+
   background-position: center;
   background-size: cover;
   width: 160px;

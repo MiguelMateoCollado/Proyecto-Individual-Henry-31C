@@ -1,33 +1,21 @@
-.selectForm select {
-  width: 120px;
-  height: 50px;
-  padding: 10px;
-  font-weight: bold;
-  background: black;
+.selecter {
+  cursor: pointer;
+  background: #fb2a1f;
   color: white;
-  border: none;
-  padding-inline: 2%;
-  transition: 0.35s;
-}
-.selectForm select:hover {
-  background: white;
-  color: black;
-}
-.selectForm option {
-  font-weight: bold;
-  font-size: 15px;
-  padding-inline: 2%;
-  width: 120px;
-  height: 50px;
-  padding: 10px;
-  color: white;
-  background: black;
-  transition: 0.35s;
-  border: none;
+  font-family: inherit;
+  padding: 0.6em 1em;
+  font-weight: 900;
+  font-size: 18px;
+  width: 250px;
+  height: auto;
+  border: 2px solid rgb(249, 247, 247);
+  border-radius: 0.4em;
+  box-shadow: 0.1em 0.1em white;
+  transition: 0.1s;
 }
 
-.selectForm option:focus {
-  background-color: white;
-  color: black;
-  outline-style: none;
+.selecter:active {
+  background: rgb(183, 10, 10);
+  transform: translate(0.05em, 0.05em);
+  box-shadow: 0.07em 0.07em white;
 }

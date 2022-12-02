@@ -1,6 +1,22 @@
-.create {
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.navbar {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.item {
+  text-decoration: none;
   cursor: pointer;
-  background: #fb2a1f;
+  background: red;
   color: white;
   font-family: inherit;
   padding: 0.6em 1.3em;
@@ -11,13 +27,12 @@
   box-shadow: 0.1em 0.1em white;
   transition: 0.1s;
 }
-
-.create:active {
+.item:active {
   transform: translate(0.05em, 0.05em);
   box-shadow: 0.07em 0.07em white;
 }
 
-.create:hover {
+.item:hover {
   background: rgb(183, 10, 10);
   transform: translate(-0.05em, -0.05em);
   box-shadow: 0.15em 0.15em rgb(220, 220, 220);

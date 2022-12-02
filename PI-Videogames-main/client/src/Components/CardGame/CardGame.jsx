@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import GamesDetails from "../GamesDetails/GamesDetails";
 import styles from "./CardGame.module.css";
 export default function CardGame({ image, name, genres, id }) {
   const divStyle = {
@@ -14,8 +13,8 @@ export default function CardGame({ image, name, genres, id }) {
     lineHeight: 1.5,
     background: `url(${image})`,
     backgroundPosition: "center",
-    backgroundSize: "400px 400px",
-    width: "260px",
+    backgroundSize: "600px 400px",
+    width: "350",
     height: "400px",
     boxShadow: ` ${0} ${0} 50px rgba(${(0, 0, 0, 0.315)})`,
   };

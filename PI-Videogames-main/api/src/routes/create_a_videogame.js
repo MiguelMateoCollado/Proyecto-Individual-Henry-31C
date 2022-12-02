@@ -4,6 +4,7 @@ const { Videogame, Genres, Plataformas } = require("../db.js");
 // crea un juego nuevo
 create_a_videogame.post("/", async (req, res) => {
   try {
+
     const {
       name,
       id,
@@ -27,11 +28,13 @@ create_a_videogame.post("/", async (req, res) => {
       platforms,
       genres,
     });
+
     let genresDB = await Genres.findAll({
       where: {
         name: genres,
       },
     });
+    
     let platformsDB = await Plataformas.findAll({
       where: {
         name: platforms,

@@ -1,7 +1,40 @@
 
 .container {
     display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 800px 800px;
     align-content: center;
+    width: 750px;
+    height: auto;
+    padding: 5%;
+    padding-right: 1%;
+    margin: 20px 0px 50px 190px;
+    background: rgb(219, 34, 34);
+    border-radius: 70px;
+    border: 15px solid rgb(249, 247, 247);
+    box-shadow: 1em 1em rgb(181, 181, 181);
 }
+
+.alfa {
+    cursor: pointer;
+    background: #fb2a1f;
+    color: white;
+    font-family: inherit;
+    padding: 0.6em 1.3em;
+    font-weight: 900;
+    font-size: 18px;
+    border: 2px solid rgb(249, 247, 247);
+    border-radius: 0.4em;
+    box-shadow: 0.1em 0.1em white;
+    transition: 0.10s;
+  }
+  
+  .alfa:hover {
+    background: rgb(183, 10, 10);
+    transform: translate(-0.05em, -0.05em);
+    box-shadow: 0.15em 0.15em rgb(220, 220, 220);
+  }
+  
+  .alfa:active {
+    transform: translate(0.05em, 0.05em);
+    box-shadow: 0.07em 0.07em white;
+  }
+  

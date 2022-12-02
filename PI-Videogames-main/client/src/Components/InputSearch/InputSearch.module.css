@@ -1,45 +1,42 @@
-.form__group {
-  width: 50%;
+.searchBar {
+  position: relative;
+  margin: 1px 0 20px;
+  width: 200px;
 }
-.form__field {
-  font-family: inherit;
-  display: grid;
-  width: 100%;
+.searchBar input {
+  background-color: transparent;
   border: 0;
-  border-bottom: 2px solid #9b9b9b;
-  outline: 0;
-  letter-spacing: 2px;
-  font-size: 1.3rem;
-  color: #d6340c;
-  padding: 7px 0;
-  background: transparent;
-  transition: border-color 0.2s;
-}
-.containerForm {
-  display: grid;
-  grid-column: 50% 50%;
-}
-
-.form__field:placeholder-shown ~ .form__label {
-  font-size: 1.3rem;
-  cursor: text;
-  top: 20px;
-}
-
-.form__label {
-  position: absolute;
-  top: 0;
+  border-bottom: 2px #fff solid;
   display: block;
-  transition: 0.2s;
-  font-size: 1rem;
-  color: #9b9b9b;
+  width: 100%;
+  padding: 15px 0;
+  font-size: 18px;
+  color: #fff;
+}
+.searchBar input:focus,
+.searchBar input:valid {
+  outline: 0;
+  border-bottom-color: lightblue;
 }
 
-.form__field:focus {
-  padding-bottom: 6px;
-  font-weight: 700;
-  border-width: 3px;
-  border-image: linear-gradient(to right, #11998e, #38ef7d);
-  border-image-slice: 4;
+.searchBar label {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  pointer-events: none;
 }
-/* reset input */
+
+.searchBar label span {
+  display: inline-block;
+  font-size: 18px;
+  min-width: 5px;
+  color: #fff;
+  transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.searchBar input:focus + label span,
+.searchBar input:valid + label span {
+  color: lightblue;
+  transform: translateY(-30px);
+}
+

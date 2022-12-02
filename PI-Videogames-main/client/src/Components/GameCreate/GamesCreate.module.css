@@ -1,0 +1,127 @@
+.create {
+  padding: 0.6em 1.3em;
+  width: auto;
+  height: auto;
+  padding: 5%;
+  margin: 100px 100px 230px 100px;
+  background: rgb(219, 34, 34);
+  border-radius: 70px;
+  border: 15px solid rgb(249, 247, 247);
+  box-shadow: 1em 1em rgb(181, 181, 181);
+}
+
+.botons {
+  display: flex;
+  flex-direction: row;
+}
+
+.botons1 {
+  display: flex;
+  flex-direction: row;
+}
+
+.input {
+  margin-left: 15px;
+  border-radius: 5px;
+  border: none;
+  width: 755px;
+  padding: 5px;
+  height: 25px;
+}
+.inputImg {
+  margin-left: 10px;
+  border-radius: 5px;
+  border: none;
+  width: 750px;
+  padding: 5px;
+  height: 25px;
+}
+.inputRating {
+  width: 100px;
+  border: none;
+  height: 25px;
+  padding: 5px;
+}
+.inputDate {
+  width: 250px;
+  font-size: 20px;
+  border: none;
+  height: 35px;
+  padding: 5px;
+}
+
+.alert {
+  color: black;
+}
+.textArea {
+  width: 500;
+}
+.genres {
+  font-size: 25px;
+}
+.items {
+  font-size: 20px;
+  margin: 15px;
+  display: inline-grid;
+  grid-template-columns: 50px 50px 50px 50px 50px;
+  grid-template-rows: 25px 25px 25px;
+  gap: 3px 10px;
+  grid-template-areas:
+    ". . . . . ."
+    ". . . . . ."
+    ". . . . . .";
+}
+.check {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 25px;
+  height: 25px;
+}
+
+.botonSubmit {
+  cursor: pointer;
+  background: #c10909;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 25px;
+  font-family: inherit;
+  padding: 0.6em 1.3em;
+  font-weight: 900;
+  font-size: 18px;
+  border: 2px solid rgb(249, 247, 247);
+  border-radius: 0.4em;
+  box-shadow: 0.2em 0.2em white;
+  transition: 0.1s;
+}
+
+.botonSubmit:disabled {
+  cursor: pointer;
+  background: #0981c1;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 25px;
+  font-family: inherit;
+  padding: 0.6em 1.3em;
+  font-weight: 900;
+  font-size: 18px;
+  border: 2px solid rgb(249, 247, 247);
+  border-radius: 0.4em;
+  box-shadow: 0.2em 0.2em white;
+  transition: 0.1s;
+}
+
+.botonRetorna {
+  cursor: pointer;
+  background: #941600;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 25px;
+  font-family: inherit;
+  padding: 0.6em 1.3em;
+  font-weight: 900;
+  font-size: 18px;
+  border: 2px solid rgb(249, 247, 247);
+  border-radius: 0.4em;
+  box-shadow: 0.2em 0.2em white;
+  transition: 0.1s;
+}

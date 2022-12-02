@@ -1,17 +1,24 @@
-.containerForm button {
-  font-size: 150%;
-  background-color: black;
-  color: white;
-  padding: 8%;
-  width: 100px;
-}
-.containerForm button {
-  position: relative;
-  z-index: 2;
-}
-.containerForm button:hover {
-  background: white;
-  color: black;
-  transition: all 0.25s;
+.alfa {
   cursor: pointer;
+  background: #fb2a1f;
+  color: white;
+  font-family: inherit;
+  padding: 0.6em 1.3em;
+  font-weight: 900;
+  font-size: 18px;
+  border: 2px solid rgb(249, 247, 247);
+  border-radius: 0.4em;
+  box-shadow: 0.1em 0.1em white;
+  transition: 0.10s;
+}
+
+.alfa:hover {
+  background: rgb(183, 10, 10);
+  transform: translate(-0.05em, -0.05em);
+  box-shadow: 0.15em 0.15em rgb(220, 220, 220);
+}
+
+.alfa:active {
+  transform: translate(0.05em, 0.05em);
+  box-shadow: 0.07em 0.07em white;
 }
